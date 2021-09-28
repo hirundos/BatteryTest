@@ -1,0 +1,275 @@
+// Copyright(c) 2013 Bluebird Inc. All rights reserved.
+
+package com.example.batterytest;
+
+public class BBAPI {
+	
+	//+Result
+	public static final int BBAPI_SUCCESS									= 0;
+	public static final int BBAPI_FAILED									= -1;
+	public static final int BBAPI_NOT_SUPPORTED								= -2;
+	public static final int BBAPI_ERROR_CHECKSUM							= -3;
+	public static final int BBAPI_ERROR_NO_RESPONSE							= -4;
+	public static final int BBAPI_BATTERY_LOW								= -5;
+	public static final int BBAPI_ERROR_BARCODE_DECODING_TIMEOUT			= -6;
+	public static final int BBAPI_ERROR_BARCODE_USE_TIMEOUT					= -7;
+	public static final int BBAPI_ERROR_BARCODE_ALREADY_OPENED				= -8;
+	public static final int BBAPI_ERROR_BARCODE_CAMERA_USED					= -9;
+	public static final int BBAPI_ERROR_BARCODE_EXCEED_ASCII_CODE			= -10;
+	//Result+
+	
+	//+Barcode Mode
+	public static final int BARCODE_MODE_PREFIX								= 500;
+	public static final int BARCODE_MODE_SUFFIX 							= BARCODE_MODE_PREFIX + 1;
+	public static final int BARCODE_MODE_SOUND 								= BARCODE_MODE_PREFIX + 2;
+	public static final int BARCODE_MODE_TRIGGER 							= BARCODE_MODE_PREFIX + 3;
+	public static final int BARCODE_MODE_AIMER 								= BARCODE_MODE_PREFIX + 4;
+	public static final int BARCODE_MODE_ILLUMINATION 						= BARCODE_MODE_PREFIX + 5;
+	public static final int BARCODE_MODE_DECODE_TIMEOUT 					= BARCODE_MODE_PREFIX + 6;
+	public static final int BARCODE_MODE_SAME_SYMBOL_TIMEOUT 				= BARCODE_MODE_PREFIX + 7;
+	
+	public static final int BARCODE_MODE_2DPQA 								= BARCODE_MODE_PREFIX + 8;
+	public static final int BARCODE_MODE_DECODE_CENTERING_WINDOW 			= BARCODE_MODE_PREFIX + 9;
+	public static final int BARCODE_MODE_DECODE_CENTERING_WINDOW_RECT 		= BARCODE_MODE_PREFIX + 10;
+	public static final int BARCODE_MODE_DECODE_OPTION						= BARCODE_MODE_PREFIX + 11;
+	public static final int BARCODE_MODE_DECODE_OPTION_PRINTWEIGHT 			= BARCODE_MODE_PREFIX + 12;
+	public static final int BARCODE_MODE_DECODE_OPTION_DECODEMODE 			= BARCODE_MODE_PREFIX + 13;
+	public static final int BARCODE_MODE_DECODE_OPTION_LINEARRANGE 			= BARCODE_MODE_PREFIX + 14;
+	public static final int BARCODE_MODE_DECODE_OPTION_VIDEOREVERSE 		= BARCODE_MODE_PREFIX + 15;
+	public static final int BARCODE_MODE_DECODE_OPTION_DECATTEMPTLIMIT 		= BARCODE_MODE_PREFIX + 16;
+	public static final int BARCODE_MODE_DECODE_OPTION_SEARCHLIMIT 			= BARCODE_MODE_PREFIX + 17;
+	public static final int BARCODE_MODE_EXPOSURE 							= BARCODE_MODE_PREFIX + 18;
+	public static final int BARCODE_MODE_EXPOSURE_TYPE 						= BARCODE_MODE_PREFIX + 19;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING 					= BARCODE_MODE_PREFIX + 20;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_EXPOSURE 			= BARCODE_MODE_PREFIX + 21;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_MAX 				= BARCODE_MODE_PREFIX + 22;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_TARGETWHITE 		= BARCODE_MODE_PREFIX + 23;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_TARGETWHITEWINDOW = BARCODE_MODE_PREFIX + 24;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_IMAGEMUSTCONFORM 	= BARCODE_MODE_PREFIX + 25;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_NUMUPDATES 		= BARCODE_MODE_PREFIX + 26;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_FRAMERATE 		= BARCODE_MODE_PREFIX + 27;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_SPECEXCLUSION 	= BARCODE_MODE_PREFIX + 28;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_SPECSATURATION 	= BARCODE_MODE_PREFIX + 29;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_SPECLIMIT 		= BARCODE_MODE_PREFIX + 30;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_FIXEDEXPOSURE 	= BARCODE_MODE_PREFIX + 31;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_FIXEDGAIN 		= BARCODE_MODE_PREFIX + 32;
+	public static final int BARCODE_MODE_EXPOSURE_SETTING_FIXEDFRAMERATE 	= BARCODE_MODE_PREFIX + 33;
+	public static final int BARCODE_MODE_LIGHTS 							= BARCODE_MODE_PREFIX + 34;
+	public static final int BARCODE_MODE_LIGHTS_TYPE 						= BARCODE_MODE_PREFIX + 35;
+	public static final int BARCODE_MODE_OCR 								= BARCODE_MODE_PREFIX + 36;
+	public static final int BARCODE_MODE_OCR_FONT 							= BARCODE_MODE_PREFIX + 37;
+	public static final int BARCODE_MODE_OCR_TEMPLATE 						= BARCODE_MODE_PREFIX + 38;
+	public static final int BARCODE_MODE_OCR_GROUP_G 						= BARCODE_MODE_PREFIX + 39;
+	public static final int BARCODE_MODE_OCR_GROUP_H 						= BARCODE_MODE_PREFIX + 40;
+	public static final int BARCODE_MODE_OCR_GROUP_CHAR 					= BARCODE_MODE_PREFIX + 41;
+	public static final int BARCODE_MODE_HANDED 							= BARCODE_MODE_PREFIX + 42;
+	public static final int BARCODE_MODE_POSTAMBLE 							= BARCODE_MODE_PREFIX + 43;
+	public static final int BARCODE_MODE_SUBAMBLE 							= BARCODE_MODE_PREFIX + 44;
+	public static final int BARCODE_MODE_DATA_WEDGE 						= BARCODE_MODE_PREFIX + 45;
+	public static final int BARCODE_MODE_USE_TIMEOUT						= BARCODE_MODE_PREFIX + 46;
+	public static final int BARCODE_MODE_DATA_WEDGE_TYPE 					= BARCODE_MODE_PREFIX + 47;
+	
+	public static final int BARCODE_MODE_PICKLIST							= BARCODE_MODE_PREFIX + 48;
+	public static final int BARCODE_MODE_IMAGE_CROPPING						= BARCODE_MODE_PREFIX + 49;
+	public static final int BARCODE_MODE_CROP_TO_PIXEL_ADDRESSES			= BARCODE_MODE_PREFIX + 50;
+	public static final int BARCODE_MODE_IMAGE_RESOLUTION					= BARCODE_MODE_PREFIX + 51;
+	public static final int BARCODE_MODE_IMAGE_FILE_FORMAT					= BARCODE_MODE_PREFIX + 52;
+	public static final int BARCODE_MODE_IMAGE_BPP							= BARCODE_MODE_PREFIX + 53;
+	public static final int BARCODE_MODE_IMAGE_CROPPING_PIXCEL_TOP			= BARCODE_MODE_PREFIX + 54;
+	public static final int BARCODE_MODE_IMAGE_CROPPING_PIXCEL_LEFT			= BARCODE_MODE_PREFIX + 55;
+	public static final int BARCODE_MODE_IMAGE_CROPPING_PIXCEL_BOTTOM		= BARCODE_MODE_PREFIX + 56;
+	public static final int BARCODE_MODE_IMAGE_CROPPING_PIXCEL_RIGHT		= BARCODE_MODE_PREFIX + 57;
+	
+	public static final int BARCODE_MODE_IMAGE_FILE_PATH					= BARCODE_MODE_PREFIX + 58;
+	public static final int BARCODE_MODE_IMAGE_CAPTURE_AIMER				= BARCODE_MODE_PREFIX + 59;
+	public static final int BARCODE_MODE_IMAGE_CAPTURE_ILLUMINATION			= BARCODE_MODE_PREFIX + 60;
+	public static final int BARCODE_MODE_ILLUMINATION_LEVEL					= BARCODE_MODE_PREFIX + 61;
+	public static final int BARCODE_MODE_DATAWEDGE_INTENT_ACTION            = BARCODE_MODE_PREFIX + 70;
+	public static final int BARCODE_MODE_DATAWEDGE_INTENT_ACTION_CATEGORY   = BARCODE_MODE_PREFIX + 71;
+
+	public static final int BARCODE_MODE_MULTI_DECODE_MODE 					= BARCODE_MODE_PREFIX + 72;
+	public static final int BARCODE_MODE_MULTI_DECODE_BARCODE_TO_READ 		= BARCODE_MODE_PREFIX + 73;
+	public static final int BARCODE_MODE_MULTI_DECODE_FULL_READ_MODE 		= BARCODE_MODE_PREFIX + 74;
+
+	public static final int BARCODE_MODE_DATAWEDGE_INTENT_ACTION_EXTRA_NAME = BARCODE_MODE_PREFIX + 75;
+	public static final int SYMBOLOGY_REPLACE_FNC1							= BARCODE_MODE_PREFIX + 76;		
+	public static final int BARCODE_MODE_DATAWEDGE_KEYBOARD_TYPE			= BARCODE_MODE_PREFIX + 77;
+    public static final int BARCODE_MODE_DATAWEDGE_DECODING_TYPE            = BARCODE_MODE_PREFIX + 78;
+	//Barcode Mode+
+	
+	//+Barcode Symbology
+	public static final int SYMBOLOGY_UPC_A 								= 1;
+	public static final int SYMBOLOGY_UPC_E 								= 2;
+	public static final int SYMBOLOGY_UPC_E1 								= 3;
+	public static final int SYMBOLOGY_EAN8 									= 4;
+	public static final int SYMBOLOGY_EAN13 								= 5;
+	public static final int SYMBOLOGY_BOOKLAND 								= 6;
+	public static final int SYMBOLOGY_SUPPLEMENTAL_CODE 					= 7;
+	public static final int SYMBOLOGY_CODE39 								= 8;
+	public static final int SYMBOLOGY_CODE93 								= 9;
+	public static final int SYMBOLOGY_CODE128 								= 10;
+	public static final int SYMBOLOGY_INTERLEAVED2OF5 						= 11;
+	public static final int SYMBOLOGY_CODABAR 								= 12;
+	public static final int SYMBOLOGY_CODE11 								= 13;
+	public static final int SYMBOLOGY_MSI 									= 14;
+	public static final int SYMBOLOGY_GS1 									= 15;
+	public static final int SYMBOLOGY_PDF417 								= 16;
+	public static final int SYMBOLOGY_ISBT128 								= 17;
+	public static final int SYMBOLOGY_COMPOSITE_CC_C 						= 18;
+	public static final int SYMBOLOGY_MATRIX2OF5 							= 19;
+	public static final int SYMBOLOGY_DATAMATRIX 							= 20;
+	public static final int SYMBOLOGY_MAXICODE 								= 21;
+	public static final int SYMBOLOGY_AZTECCODE 							= 22;
+	public static final int SYMBOLOGY_MICROPDF 								= 23;
+	public static final int SYMBOLOGY_QRCODE 								= 24;
+	public static final int SYMBOLOGY_TRIOPTIC_CODE 						= 25;
+	public static final int SYMBOLOGY_DISCRETE2OF5 							= 26;
+	public static final int SYMBOLOGY_USPS4CB 								= 27;
+	public static final int SYMBOLOGY_AUSTRALIA_POST 						= 28;
+	public static final int SYMBOLOGY_UK_POST 								= 29;
+	public static final int SYMBOLOGY_CHINESE_POST 							= 30;
+	public static final int SYMBOLOGY_JAPANESE_POST 						= 31;
+	public static final int SYMBOLOGY_NETHERLANDS_POST 						= 32;
+	public static final int SYMBOLOGY_KOREAN_POST 							= 33;
+	public static final int SYMBOLOGY_US_POSTNET 							= 34;
+	public static final int SYMBOLOGY_US_PLANET 							= 35;
+	
+	public static final int SYMBOLOGY_UPC_A_PREAMBLE 						= 36;
+	public static final int SYMBOLOGY_UPC_A_TRANSMIT_CHECK_DIGIT 			= 37;
+	public static final int SYMBOLOGY_UPC_E_PREAMBLE 						= 38;
+	public static final int SYMBOLOGY_UPC_E_TRANSMIT_CHECK_DIGIT 			= 39;
+	public static final int SYMBOLOGY_UPC_E1_PREAMBLE 						= 40;
+	public static final int SYMBOLOGY_UPC_E1_TRANSMIT_CHECK_DIGIT 			= 41;
+	public static final int SYMBOLOGY_EAN8_EXTEND 							= 42;
+	public static final int SYMBOLOGY_EAN_TRANSMIT_ISSN 					= 43;
+	public static final int SYMBOLOGY_BOOKLAND_ISBN 						= 44;
+	public static final int SYMBOLOGY_SUPPLEMENTAL_REDUNDANCY 				= 45;
+	public static final int SYMBOLOGY_SUPPLEMENTAL_AIM_ID 					= 46;
+	public static final int SYMBOLOGY_CODE39_LENGTH_MIN 					= 47;
+	public static final int SYMBOLOGY_CODE39_LENGTH_MAX 					= 48;
+	public static final int SYMBOLOGY_CODE39_CHECK_DIGIT 					= 49;
+	public static final int SYMBOLOGY_CODE39_TRANSMIT_CHECK_DIGIT 			= 50;
+	public static final int SYMBOLOGY_CODE39_FULL_ASCII 					= 51;
+	public static final int SYMBOLOGY_CODE93_LENGTH_MIN 					= 52;
+	public static final int SYMBOLOGY_CODE93_LENGTH_MAX 					= 53;
+	public static final int SYMBOLOGY_CODE128_LENGTH_MIN 					= 54;
+	public static final int SYMBOLOGY_CODE128_LENGTH_MAX 					= 55;
+	public static final int SYMBOLOGY_CODE128_EMULATION 					= 56;
+	public static final int SYMBOLOGY_INTERLEAVED2OF5_LENGTH_MIN 			= 57;
+	public static final int SYMBOLOGY_INTERLEAVED2OF5_LENGTH_MAX 			= 58;
+	public static final int SYMBOLOGY_INTERLEAVED2OF5_CHECK_DIGIT 			= 59;
+	public static final int SYMBOLOGY_INTERLEAVED2OF5_TRANSMIT_CHECK_DIGIT 	= 60;
+	public static final int SYMBOLOGY_CODABAR_LENGTH_MIN 					= 61;
+	public static final int SYMBOLOGY_CODABAR_LENGTH_MAX 					= 62;
+	public static final int SYMBOLOGY_CODABAR_CLSI_EDITING 					= 63;
+	public static final int SYMBOLOGY_CODABAR_NOTIS_EDITING 				= 64;
+	public static final int SYMBOLOGY_CODE11_LENGTH_MIN 					= 65;
+	public static final int SYMBOLOGY_CODE11_LENGTH_MAX 					= 66;
+	public static final int SYMBOLOGY_CODE11_CHECK_DIGIT 					= 67;
+	public static final int SYMBOLOGY_CODE11_TRANSMIT_CHECK_DIGIT 			= 68;
+	public static final int SYMBOLOGY_MSI_LENGTH_MIN 						= 69;
+	public static final int SYMBOLOGY_MSI_LENGTH_MAX 						= 70;
+	public static final int SYMBOLOGY_MSI_CHECK_DIGIT 						= 71;
+	public static final int SYMBOLOGY_MSI_TRANSMIT_CHECK_DIGIT 				= 72;
+	public static final int SYMBOLOGY_MSI_CHECK_DIGIT_ALGORITHM 			= 73;
+	public static final int SYMBOLOGY_GS1_LIMITED 							= 74;
+	public static final int SYMBOLOGY_GS1_LIMITED_SECURITY_LEVEL 			= 75;
+	public static final int SYMBOLOGY_ISBT128_CONCATENATION 				= 76;
+	public static final int SYMBOLOGY_ISBT128_CHECK_TABLE 					= 77;
+	public static final int SYMBOLOGY_ISBT128_CONCATENATION_REDUNDANCY 		= 78;
+	public static final int SYMBOLOGY_MATRIX2OF5_LENGTH_MIN 				= 79;
+	public static final int SYMBOLOGY_MATRIX2OF5_LENGTH_MAX 				= 80;
+	public static final int SYMBOLOGY_MATRIX2OF5_SUPPLEMENTAL_REDUNDANCY 	= 81;
+	public static final int SYMBOLOGY_MATRIX2OF5_CHECK_DIGIT 				= 82;
+	public static final int SYMBOLOGY_MATRIX2OF5_TRANSMIT_CHECK_DIGIT 		= 83;
+	public static final int SYMBOLOGY_COMPOSITE_CC_AB 						= 84;
+	public static final int SYMBOLOGY_COMPOSITE_TLC_39 						= 85;
+	public static final int SYMBOLOGY_COMPOSITE_UPC 						= 86;
+	public static final int SYMBOLOGY_DATAMATRIX_INVERSE 					= 87;
+	public static final int SYMBOLOGY_DATAMATRIX_ONLY 						= 88;
+	public static final int SYMBOLOGY_DISCRETE2OF5_LENGTH_MIN 				= 89;
+	public static final int SYMBOLOGY_DISCRETE2OF5_LENGTH_MAX 				= 90;
+	public static final int SYMBOLOGY_US_TRANSMIT_CHECK_DIGIT 				= 91;
+	public static final int SYMBOLOGY_QRCODE_INVERSE 						= 92;
+	public static final int SYMBOLOGY_SPECIFIC_SECURITY 					= 93;
+	public static final int SYMBOLOGY_SPECIFIC_INTERCHARACTER 				= 94;
+	public static final int SYMBOLOGY_COUPON_REPORT 						= 95;
+	public static final int SYMBOLOGY_CONVERT_UPCE_TO_A 					= 96;
+	public static final int SYMBOLOGY_CONVERT_UPCE1_TO_A 					= 97;
+	public static final int SYMBOLOGY_CONVERT_CODE39_TO_32 					= 98;
+	public static final int SYMBOLOGY_CONVERT_I2OF5_TO_EAN13 				= 99;
+	public static final int SYMBOLOGY_CONVERT_GS1_TO_UPCEAN 				= 100;
+	public static final int SYMBOLOGY_GS1_DATABAR_EXPANDED 					= 101;
+	public static final int SYMBOLOGY_GS1_128_EMULATION_FOR_UCC_COMPOSITE_CODE = 102;
+	public static final int SYMBOLOGY_INVERSE_1D 							= 103;
+	public static final int SYMBOLOGY_UPU_FICS_POSTAL 						= 104;
+	public static final int SYMBOLOGY_UPC_COMPOSITE_MODE 					= 105;
+	public static final int SYMBOLOGY_AZTEC_INVERSE 						= 106;
+	public static final int SYMBOLOGY_SPECIFIC_REDUNDANCY_LEVEL 			= 107;
+	public static final int SYMBOLOGY_AUSTRALIA_POST_FORMAT 				= 108;
+	public static final int SYMBOLOGY_TRANSMIT_UK_POST_CHECK_DIGIT 			= 109;
+	public static final int SYMBOLOGY_CODE32_PREFIX 						= 110;
+	public static final int SYMBOLOGY_USER_SUPPLEMENTAL_1 					= 111;
+	public static final int SYMBOLOGY_USER_SUPPLEMENTAL_2 					= 112;
+	public static final int SYMBOLOGY_MICROQR								= 113;
+	
+	public static final int SYMBOLOGY_CODE49								= 114;
+	public static final int SYMBOLOGY_OCR									= 115;
+	public static final int SYMBOLOGY_CANADIAN_POST							= 116;
+	public static final int SYMBOLOGY_IATA25								= 117;
+	public static final int SYMBOLOGY_TLCODE39								= 118;
+	public static final int SYMBOLOGY_CODE32								= 119;
+	public static final int SYMBOLOGY_STRAIGHT2OF5							= 120;
+	//public static final int SYMBOLOGY_PLESSEY								= 121;
+	public static final int SYMBOLOGY_TELEPEN								= 122;
+	public static final int SYMBOLOGY_CODE16K								= 123;
+	public static final int SYMBOLOGY_POSI_CODE								= 124;
+	public static final int SYMBOLOGY_IDTAG									= 125;
+	public static final int SYMBOLOGY_LABEL4								= 126;
+	public static final int SYMBOLOGY_LABEL5								= 127;
+	public static final int SYMBOLOGY_GS1_128								= 128;
+	public static final int SYMBOLOGY_NUMBER								= 129;
+	public static final int SYMBOLOGY_ALL									= 130;
+	public static final int SYMBOLOGY_CODABLOCK								= 131;
+	public static final int SYMBOLOGY_RSS14									= 132;
+	public static final int SYMBOLOGY_CHINESE_2OF5 							= 133;
+	
+	public static final int SYMBOLOGY_HANXIN 								= 134;
+	public static final int SYMBOLOGY_HANXIN_INVERSE 						= 135;
+	public static final int SYMBOLOGY_IATA			 						= 136;
+	public static final int SYMBOLOGY_EAN128		 						= 137;
+	public static final int SYMBOLOGY_UPC_D			 						= 138;
+	public static final int SYMBOLOGY_GS1_DATABAR			 				= 139;
+	public static final int SYMBOLOGY_SCANLET			 					= 140;
+	public static final int SYMBOLOGY_CUECODE			 					= 141;
+	public static final int SYMBOLOGY_SIGNATURE_CAPTURE			 			= 142;
+	
+	//	+newland		
+	public static final int SYMBOLOGY_AIM_128			 	   	       		= 143;
+	public static final int SYMBOLOGY_EAN_UCC_COMPOSITE			 			= 144;		
+	public static final int SYMBOLOGY_UPC_EAN_COMPOSITE			 			= 145;										
+	public static final int SYMBOLOGY_CODE39_START_STOP	              	 	= 146;
+	public static final int SYMBOLOGY_CODABAR_CHECK_DIGIT	          	  	= 147;
+	public static final int SYMBOLOGY_CODABAR_START_STOP	          	  	= 148;
+	public static final int SYMBOLOGY_GS1_DATABAR_AI	                	= 149;	
+	public static final int SYMBOLOGY_INDUSTRIAL_25		 		        	= 150;
+	public static final int SYMBOLOGY_INDUSTRIAL_25_LENGTH_MIN 		    	= 151;
+	public static final int SYMBOLOGY_INDUSTRIAL_25_LENGTH_MAX	        	= 152;
+	public static final int SYMBOLOGY_INDUSTRIAL_25_CHECK_DIGIT	        	= 153;		
+	public static final int SYMBOLOGY_STANDARD_25							= 154;		
+	public static final int SYMBOLOGY_STANDARD_25_LENGTH_MIN				= 155;		
+	public static final int SYMBOLOGY_STANDARD_25_LENGTH_MAX				= 156;		
+	public static final int SYMBOLOGY_STANDARD_25_CHECK_DIGIT				= 157;		
+	public static final int SYMBOLOGY_PLESSEY								= 158;			
+	public static final int SYMBOLOGY_PLESSEY_LENGTH_MIN					= 159;		
+	public static final int SYMBOLOGY_PLESSEY_LENGTH_MAX					= 160;			
+	public static final int SYMBOLOGY_PLESSEY_CHECK_DIGIT					= 161;			
+	public static final int SYMBOLOGY_CHINESE_SENSIBLE_CODE 				= 162;	
+	public static final int SYMBOLOGY_OCR_B	                            	= 163;	
+	public static final int SYMBOLOGY_UPC_E_EXPAND_TO_UPC_A             	= 164;
+	//	newland+
+
+	public static final int SYMBOLOGY_EAN8_TRANSMIT_CHECK_DIGIT 			= 165;
+	public static final int SYMBOLOGY_EAN13_TRANSMIT_CHECK_DIGIT 			= 166;
+	//Barcode Symbology+
+}
