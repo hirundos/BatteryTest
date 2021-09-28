@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">BatteryTest</string>
+    <string name="upload_complete">UpLoad Complete</string>
+    <string name="upload_fail">UpLoad Fail</string>
+    <string name="download_complete">DownLoad Complete</string>
+    <string name="download_fail">DownLoad Fail</string>
+    <string name="server_hostname">210.116.118.49</string>
+    <string name="server_username">ftpbb</string>
+    <string name="server_password">sdfn@$sg</string>
+    <string name="ftp_not_start">ftp not start</string>
+    <string name="ftp_connected">ftp connected</string>
+    <string name="ftp_disconnect">ftp disconnected</string>
+    <string name="barcode_read_start">barcode reading</string>
+    <string name="barcode_read_stop">barcode not reading</string>
+    <string name="barcode_open">Barcode Open</string>
+    <string name="barcode_close">Barcode Close</string>
+    <string name="ftp_btn_start">Start</string>
+    <string name="ftp_btn_stop">Stop</string>
+    <string name="barcode_btn_start">barcode read start</string>
+    <string name="barcode_btn_stop">barcode read stop</string>
+    <string name="upload_file_name">send.txt</string>
+    <string name="download_file_name">send.txt</string>
+    <string name="timeRecode_file_name">time.txt</string>
+    <string name="internet_status">Internet is not connected</string>
+    <string name="ftp_connection_err">problem with the ftp connection</string>
+</resources>
